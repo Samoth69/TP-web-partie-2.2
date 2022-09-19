@@ -36,3 +36,14 @@ Upgrade-Insecure-Requests: 1
 
 nom=Patrick+l%27%C3%A9toile+de+mer&bouton=Envoyer
 ```
+
+# Partie 2.2 - CSS
+
+## 1. Mise en forme CSS du site monopage
+
+Quelle hauteur donner à cette section pour qu’elle occupe toute la hauteur
+de l’écran ?
+
+```css
+100vh
+```
