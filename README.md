@@ -5,10 +5,9 @@ Tarik SAGLAMER
 
 ## Formulaires
 
-
 1. Qu’est-ce qui change côté en-têtes HTTP ?
 
-En POST ces 3 balises apparaissent : 
+En POST ces 3 balises apparaissent :
 
 ```http
 Content-Type: application/x-www-form-urlencoded
@@ -18,7 +17,7 @@ Origin: http://192.168.162.128
 
 2. Où apparaissent les paramètres dans la requête POST ?
 
-Les paramètres après apparaissent les en-têtes ci-dessous : 
+Les paramètres après apparaissent les en-têtes ci-dessous :
 
 ```http
 POST /index2.html HTTP/1.1
@@ -37,5 +36,3 @@ Upgrade-Insecure-Requests: 1
 
 nom=Patrick+l%27%C3%A9toile+de+mer&bouton=Envoyer
 ```
-
-## 2. Création d’un site mono-page
