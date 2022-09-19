@@ -5,8 +5,8 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 4,6em;
-  letter-spacing : 2px;
+  font-size: 4, 6em;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -15,12 +15,11 @@ h2 {
 }
 
 header {
-  background-image: url('background.jpg');
+  background-image: url("background.jpg");
   background-size: cover;
   background-position: bottom;
   height: 50em;
   color: #fff;
-
 }
 
 ul {
@@ -42,4 +41,70 @@ li a {
 li a:hover {
   background-color: #555;
   color: white;
+}
+
+/* page content */
+section {
+  padding: 1em;
+}
+
+h2 {
+  border-bottom: #555 1px solid;
+}
+
+#Disclaimer {
+  font-size: 0.8em;
+  text-align: center;
+  color: #f00;
+}
+
+.right-info {
+  float: right;
+  width: 7em;
+  margin: 0 0 1em 1em;
+  border: #555 1px solid;
+  padding: 0.5em;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-info img {
+  width: 5em;
+}
+
+.right-info p {
+  margin-bottom: 0;
+}
+
+#Contact .section-sub-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#Contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 40em;
+}
+
+#Contact-form input,
+#Contact-form textarea,
+#Contact-form select {
+  margin-bottom: 1em;
+}
+
+#sujet {
+  height: 5em;
+}
+
+/* footer */
+footer {
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
 }
