@@ -5,8 +5,8 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 4,6em;
-  letter-spacing : 2px;
+  font-size: 4, 6em;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -15,7 +15,7 @@ h2 {
 }
 
 header {
-  background-image: url('background.jpg');
+  background-image: url("background.jpg");
   background-size: cover;
   background-position: bottom;
   height: 50em;
