@@ -20,17 +20,12 @@ header {
   background-position: bottom;
   height: 50em;
   color: #fff;
-<<<<<<< HEAD
   position: relative;
-
-=======
->>>>>>> a363643300659be20a94476e907e51512f3b8b8a
 }
-
 
 nav {
   display: flex; /*1*/
-  flex-direction : row; /*2*/
+  flex-direction: row; /*2*/
   justify-content: center; /*3*/
 }
 
