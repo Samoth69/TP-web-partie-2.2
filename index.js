@@ -53,7 +53,7 @@ function setCaseRed(line, pos) {
 
 // normalise le mot (enlève les accents notamment)
 function normalize(input) {
-  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function onKeyPressed(event) {
@@ -92,10 +92,11 @@ function onKeyPressed(event) {
 function gameTick() {
   for (i = 0; i < to_guest_word.length; i++) {
     if (to_guest_word.includes(getCase(current_line, i).innerHTML)) {
-      setCaseYellow(current_line, i);
-    }
-    if (to_guest_word[i] == getCase(current_line, i).innerHTML) {
-      setCaseRed(current_line, i);
+      if (to_guest_word[i] == getCase(current_line, i).innerHTML) {
+        setCaseRed(current_line, i);
+      } else {
+        setCaseYellow(current_line, i);
+      }
     }
   }
 }
