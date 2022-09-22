@@ -9,7 +9,7 @@ var to_guest_word = null;
 
 // todo
 function getRandomMot() {
-  return normalize("écriture");
+  return normalize("maison");
 }
 
 function startGame() {
