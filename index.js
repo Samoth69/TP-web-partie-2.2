@@ -1,4 +1,4 @@
-const table_id = "table-modus";
+const table_id = "motus-table-main";
 // ligne actuel
 var current_line = 0;
 
@@ -9,7 +9,7 @@ var to_guest_word = null;
 
 // todo
 function getRandomMot() {
-  return "patate";
+  return normalize("écriture");
 }
 
 function startGame() {
@@ -20,22 +20,21 @@ function startGame() {
   tb.innerHTML = "";
 
   for (var i = 0; i < 6; i++) {
-    var tr = document.createElement("tr");
-    tb.appendChild(tr);
+    var row_div = document.createElement("div");
+    row_div.classList.add("motus-table-row");
+    tb.appendChild(row_div);
     for (var j = 0; j < to_guest_word.length; j++) {
-      var td = document.createElement("td");
-      tr.appendChild(td);
-
       var div = document.createElement("div");
-      div.className = "motus-base";
+      div.classList.add("motus-base");
       div.id = "motus-" + i + "-" + j;
-      td.appendChild(div);
+      row_div.appendChild(div);
     }
   }
 
   document.addEventListener("keydown", (event) => onKeyPressed(event));
 }
 
+// renvoie la case (div) à la ligne et à la position donnée
 function getCase(line, pos) {
   return document.getElementById("motus-" + line + "-" + pos);
 }
@@ -52,6 +51,11 @@ function setCaseRed(line, pos) {
   getCase(line, pos).classList.add("motus-red");
 }
 
+// normalise le mot (enlève les accents notamment)
+function normalize(input) {
+  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+}
+
 function onKeyPressed(event) {
   if (current_line <= 5) {
     // if the character is a letter
@@ -64,6 +68,7 @@ function onKeyPressed(event) {
       if (key.length > 1) {
         return;
       }
+      key = normalize(key);
       setCaseValue(current_line, current_car, key);
       current_car++;
     } else {

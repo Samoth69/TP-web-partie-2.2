@@ -118,12 +118,25 @@ h2 {
 }
 
 /* Motus */
+.motus-table-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.motus-table-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .motus-base {
   background-color: #d3d3d3;
   border-color: #000;
   border: 1px solid;
   width: 3em;
   height: 3em;
+  margin: 0.1em;
   display: flex;
   justify-content: center;
   align-items: center;
