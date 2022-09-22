@@ -93,10 +93,11 @@ function onKeyPressed(event) {
 function gameTick() {
   for (i = 0; i < to_guest_word.length; i++) {
     if (to_guest_word.includes(getCase(current_line, i).innerHTML)) {
-      setCaseYellow(current_line, i);
-    }
-    if (to_guest_word[i] == getCase(current_line, i).innerHTML) {
-      setCaseRed(current_line, i);
+      if (to_guest_word[i] == getCase(current_line, i).innerHTML) {
+        setCaseRed(current_line, i);
+      } else {
+        setCaseYellow(current_line, i);
+      }
     }
   }
 }
