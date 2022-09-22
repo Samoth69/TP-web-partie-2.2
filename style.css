@@ -117,6 +117,23 @@ h2 {
   height: 5em;
 }
 
+/* Motus */
+.motus-base {
+  background-color: #d3d3d3;
+  border-color: #000;
+  border: 1px solid;
+}
+
+.motus-present {
+  background-color: #ffd700;
+  border-color: #b8860b;
+}
+
+.motus-exact {
+  background-color: #fa8072;
+  border-color: #8b0000;
+}
+
 /* footer */
 footer {
   background-color: #555;
