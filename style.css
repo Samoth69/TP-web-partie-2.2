@@ -122,14 +122,19 @@ h2 {
   background-color: #d3d3d3;
   border-color: #000;
   border: 1px solid;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.motus-present {
+.motus-yellow {
   background-color: #ffd700;
   border-color: #b8860b;
 }
 
-.motus-exact {
+.motus-red {
   background-color: #fa8072;
   border-color: #8b0000;
 }
