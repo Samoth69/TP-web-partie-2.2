@@ -7,9 +7,10 @@ var current_car = 0;
 
 var to_guest_word = null;
 
-// todo
 function getRandomMot() {
-  return normalize("écriture");
+  const random = Math.floor(Math.random() * mots.length);
+  console.log(mots[random]);
+  return mots[random];
 }
 
 function startGame() {
@@ -53,7 +54,7 @@ function setCaseRed(line, pos) {
 
 // normalise le mot (enlève les accents notamment)
 function normalize(input) {
-  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function onKeyPressed(event) {
