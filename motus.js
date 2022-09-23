@@ -12,6 +12,8 @@ var to_guest_word;
 
 // return a random word
 function getRandomMot() {
+  return "joindre";
+
   const random = Math.floor(Math.random() * mots.length);
   console.log(mots[random]);
   return normalize(mots[random]);
@@ -95,7 +97,6 @@ function onKeyPressed(event) {
       key = normalize(key);
       setCaseValue(current_line, current_car, key);
       current_car++;
-
     } else {
       if (event.key == "Enter") {
         // if the word is the correct size
@@ -135,15 +136,14 @@ function gameTick() {
   // check if a letter is in text BUT NOT in the right place
   // this below exclude letter that are in the right place
   for (i = 0; i < arr.length; i++) {
-    if (arr[i] == 0) {
-      for (j = 0; j < arr.length; j++) {
-        if (
-          arr[j] == 0 &&
-          to_guest_word[i] == getCase(current_line, j).innerHTML
-        ) {
-          arr[j] = 1;
-          break;
-        }
+    for (j = 0; j < arr.length; j++) {
+      if (
+        arr[j] == 0 &&
+        to_guest_word[i] == getCase(current_line, j).innerHTML &&
+        arr[i] != 2
+      ) {
+        arr[j] = 1;
+        break;
       }
     }
   }
