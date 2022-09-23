@@ -139,17 +139,23 @@ function gameTick() {
   }
 
   if (is_win) {
-    alert("You win !");
+    win();
   } else {
     if (current_line == 5) {
-      alert("You loose !");
+      lose();
     }
   }
 }
 
 function win(){
-  var docs = document.getElementById("img");
+  var docs = document.getElementById("win");
   docs.setAttribute("src", "win.gif");
+  docs.style.display = 'block';
+}
+
+function lose(){
+  var docs = document.getElementById("lose");
+  docs.setAttribute("src", "lose.gif");
   docs.style.display = 'block';
 }
 

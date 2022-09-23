@@ -68,6 +68,13 @@ h2 {
   border-bottom: #555 1px solid;
 }
 
+#win, #lose {
+  display: none;
+  vertical-align: middle;
+  text-align: center;
+  width: 20em;
+}
+
 #Disclaimer {
   font-size: 0.8em;
   text-align: center;
