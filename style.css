@@ -170,6 +170,14 @@ h2 {
   color: #b1b1b1;
 }
 
+.hidden {
+  display: none;
+}
+
+#motus-end-game {
+
+}
+
 /* footer */
 footer {
   background-color: #555;

@@ -1,11 +1,11 @@
 const table_id = "motus-table-main";
 // ligne actuel
-var current_line = 0;
+var current_line;
 
 // emplacement dans la ligne
-var current_car = 0;
+var current_car;
 
-var to_guest_word = null;
+var to_guest_word;
 
 function getRandomMot() {
   const random = Math.floor(Math.random() * mots.length);
@@ -13,7 +13,22 @@ function getRandomMot() {
   return normalize(mots[random]);
 }
 
+// called once on load
+function init() {
+  document.addEventListener("keydown", (event) => onKeyPressed(event));
+  document
+    .getElementById("motus-end-game-button")
+    .addEventListener("click", (event) => boutonRejouerClick(event));
+  startGame();
+}
+
+// should be called everytime a new game start
 function startGame() {
+  var div = document.getElementById("motus-end-game");
+  div.classList.add("hidden");
+
+  current_car = 0;
+  current_line = 0;
   to_guest_word = getRandomMot();
   var tb = document.getElementById(table_id);
 
@@ -31,8 +46,6 @@ function startGame() {
       row_div.appendChild(div);
     }
   }
-
-  document.addEventListener("keydown", (event) => onKeyPressed(event));
 }
 
 // renvoie la case (div) à la ligne et à la position donnée
@@ -139,24 +152,35 @@ function gameTick() {
   }
 
   if (is_win) {
-    win();
+    endGame(true);
   } else {
     if (current_line == 5) {
-      lose();
+      endGame(false);
     }
   }
 }
 
-function win(){
-  var docs = document.getElementById("win");
-  docs.setAttribute("src", "win.gif");
-  docs.style.display = 'block';
+// should be called when the game is over
+// win: true if winned, false if lost
+function endGame(win) {
+  var div = document.getElementById("motus-end-game");
+  div.classList.remove("hidden");
+
+  var h1 = document.getElementById("motus-end-game-title");
+  h1.innerHTML = win ? "Gagné !" : "Perdu !";
+
+  var img = document.getElementById("motus-end-game-image");
+  if (win) {
+    img.setAttribute("src", "win.gif");
+    img.setAttribute("alt", "Gagné !");
+  } else {
+    img.setAttribute("src", "lose.gif");
+    img.setAttribute("alt", "Perdu !");
+  }
 }
 
-function lose(){
-  var docs = document.getElementById("lose");
-  docs.setAttribute("src", "lose.gif");
-  docs.style.display = 'block';
+function boutonRejouerClick(event) {
+  startGame();
 }
 
-window.onload = startGame;
+window.onload = init;
