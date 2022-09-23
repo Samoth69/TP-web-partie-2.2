@@ -12,6 +12,8 @@ var to_guest_word;
 
 // return a random word
 function getRandomMot() {
+  return "joindre";
+
   const random = Math.floor(Math.random() * mots.length);
   console.log(mots[random]);
   return normalize(mots[random]);
