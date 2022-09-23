@@ -136,4 +136,10 @@ function gameTick() {
   }
 }
 
+function win(){
+  var docs = document.getElementById("img");
+  docs.setAttribute("src", "win.gif");
+  docs.style.display = 'block';
+}
+
 window.onload = startGame;
