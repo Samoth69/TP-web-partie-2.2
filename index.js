@@ -10,7 +10,7 @@ var to_guest_word = null;
 function getRandomMot() {
   const random = Math.floor(Math.random() * mots.length);
   console.log(mots[random]);
-  return mots[random];
+  return normalize(mots[random]);
 }
 
 function startGame() {
