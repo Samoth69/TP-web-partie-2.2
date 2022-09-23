@@ -10,6 +10,9 @@ var current_car;
 // word to guest
 var to_guest_word;
 
+// will be true if the game is finished (no matter if winned or losed)
+var is_done;
+
 // return a random word
 function getRandomMot() {
   const random = Math.floor(Math.random() * mots.length);
@@ -31,6 +34,7 @@ function startGame() {
   var div = document.getElementById("motus-end-game");
   div.classList.add("hidden");
 
+  is_done = false;
   current_car = 0;
   current_line = 0;
   to_guest_word = getRandomMot();
@@ -76,6 +80,10 @@ function normalize(input) {
 
 // when the user type something on their keyboard
 function onKeyPressed(event) {
+  if (is_done) {
+    startGame();
+  }
+
   if (current_line <= 5) {
     // if the character is a letter
     if (String.fromCharCode(event.keyCode).match(/\w/gi)) {
@@ -192,6 +200,8 @@ function endGame(win) {
     img.setAttribute("src", "lose.gif");
     img.setAttribute("alt", "Perdu !");
   }
+
+  is_done = true;
 }
 
 // triggered when the user click the replay button
