@@ -1,12 +1,16 @@
+// id to DOM element where we should create the table
 const table_id = "motus-table-main";
+
 // ligne actuel
 var current_line;
 
 // emplacement dans la ligne
 var current_car;
 
+// word to guest
 var to_guest_word;
 
+// return a random word
 function getRandomMot() {
   const random = Math.floor(Math.random() * mots.length);
   console.log(mots[random]);
@@ -70,6 +74,7 @@ function normalize(input) {
   return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+// when the user type something on their keyboard
 function onKeyPressed(event) {
   if (current_line <= 5) {
     // if the character is a letter
@@ -78,15 +83,22 @@ function onKeyPressed(event) {
       if (current_car >= to_guest_word.length) {
         return;
       }
+      // force the key to be lowercase
       var key = event.key.toLowerCase();
+
+      // if the key is length of one we continue
+      // exclude stuff like F1, F2, F3, etc...
       if (key.length > 1) {
         return;
       }
+
       key = normalize(key);
       setCaseValue(current_line, current_car, key);
       current_car++;
+
     } else {
       if (event.key == "Enter") {
+        // if the word is the correct size
         if (current_car == to_guest_word.length) {
           gameTick();
           current_line++;
@@ -104,6 +116,8 @@ function onKeyPressed(event) {
 
 // triggered when the user press enter (and this enter is valid aka, we have a complete word)
 function gameTick() {
+  // array containing number for each letter
+  // the value correspond to what color we should put on the letter
   // 0: nothing
   // 1: yellow (letter is in text)
   // 2: red (letter is in text and in the right place)
@@ -134,8 +148,10 @@ function gameTick() {
     }
   }
 
-  // fill red or yellow according to arr content
+  // will be true if the user win the game
+  // false if lose or the game isn't done yet
   var is_win = true;
+  // fill red or yellow according to arr content
   for (i = 0; i < arr.length; i++) {
     switch (arr[i]) {
       case 1:
@@ -154,6 +170,7 @@ function gameTick() {
   if (is_win) {
     endGame(true);
   } else {
+    // if we are on last line, then the user lose
     if (current_line == 5) {
       endGame(false);
     }
@@ -179,6 +196,7 @@ function endGame(win) {
   }
 }
 
+// triggered when the user click the replay button
 function boutonRejouerClick(event) {
   startGame();
 }
