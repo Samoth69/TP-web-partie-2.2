@@ -122,16 +122,27 @@ function gameTick() {
   }
 
   // fill red or yellow according to arr content
+  var is_win = true;
   for (i = 0; i < arr.length; i++) {
     switch (arr[i]) {
       case 1:
         setCaseYellow(current_line, i);
+        is_win = false;
         break;
       case 2:
         setCaseRed(current_line, i);
         break;
       default:
+        is_win = false;
         break;
+    }
+  }
+
+  if (is_win) {
+    alert("You win !");
+  } else {
+    if (current_line == 5) {
+      alert("You loose !");
     }
   }
 }
