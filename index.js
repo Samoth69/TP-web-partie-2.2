@@ -91,13 +91,47 @@ function onKeyPressed(event) {
 
 // triggered when the user press enter (and this enter is valid aka, we have a complete word)
 function gameTick() {
+  // 0: nothing
+  // 1: yellow (letter is in text)
+  // 2: red (letter is in text and in the right place)
+  arr = new Array(to_guest_word.length).fill(0);
+
+  // mark exact match (letter is in text and in the right place)
   for (i = 0; i < to_guest_word.length; i++) {
     if (to_guest_word.includes(getCase(current_line, i).innerHTML)) {
       if (to_guest_word[i] == getCase(current_line, i).innerHTML) {
-        setCaseRed(current_line, i);
-      } else {
-        setCaseYellow(current_line, i);
+        arr[i] = 2;
       }
+    }
+  }
+
+  // check if a letter is in text BUT NOT in the right place
+  // this below exclude letter that are in the right place
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] == 0) {
+      for (j = 0; j < arr.length; j++) {
+        if (
+          arr[j] == 0 &&
+          to_guest_word[i] == getCase(current_line, j).innerHTML
+        ) {
+          arr[j] = 1;
+          break;
+        }
+      }
+    }
+  }
+
+  // fill red or yellow according to arr content
+  for (i = 0; i < arr.length; i++) {
+    switch (arr[i]) {
+      case 1:
+        setCaseYellow(current_line, i);
+        break;
+      case 2:
+        setCaseRed(current_line, i);
+        break;
+      default:
+        break;
     }
   }
 }
