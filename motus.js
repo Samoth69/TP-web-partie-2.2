@@ -246,7 +246,7 @@ function boutonRejouerClick(event) {
 
 function clearScore() {
   var oktorefresh = confirm(
-    "Attention !!! La partie en cours va être réinitialiser !"
+    "Attention !!! La partie actuelle se réinitialisera !"
   );
   if (oktorefresh) {
     localStorage.setItem("score", 0);
