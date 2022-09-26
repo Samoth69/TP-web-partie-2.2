@@ -32,13 +32,13 @@ function init() {
     clearScore();
   }
 
-  document.addEventListener("keydown", (event) => onKeyPressed(event));
+  document.addEventListener("keydown", onKeyPressed);
   document
     .getElementById("motus-end-game-button")
-    .addEventListener("click", (event) => boutonRejouerClick(event));
+    .addEventListener("click", boutonRejouerClick);
   document
     .getElementById("motus-reset-score-button")
-    .addEventListener("click", (event) => clearScore(event));
+    .addEventListener("click", clearScore);
   startGame();
 }
 
@@ -120,13 +120,13 @@ function onKeyPressed(event) {
         }
         // force the key to be lowercase
         var key = event.key.toLowerCase();
-  
+
         // if the key is length of one we continue
         // exclude stuff like F1, F2, F3, etc...
         if (key.length > 1) {
           return;
         }
-  
+
         key = normalize(key);
         setCaseValue(current_line, current_car, key);
         current_car++;
