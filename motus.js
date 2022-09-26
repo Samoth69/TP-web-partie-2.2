@@ -110,39 +110,39 @@ function normalize(input) {
 function onKeyPressed(event) {
   if (is_done) {
     startGame();
-  }
-
-  if (current_line <= 5) {
-    // if the character is a letter
-    if (String.fromCharCode(event.keyCode).match(/\w/gi)) {
-      // if the word is too long
-      if (current_car >= to_guest_word.length) {
-        return;
-      }
-      // force the key to be lowercase
-      var key = event.key.toLowerCase();
-
-      // if the key is length of one we continue
-      // exclude stuff like F1, F2, F3, etc...
-      if (key.length > 1) {
-        return;
-      }
-
-      key = normalize(key);
-      setCaseValue(current_line, current_car, key);
-      current_car++;
-    } else {
-      if (event.key == "Enter") {
-        // if the word is the correct size
-        if (current_car == to_guest_word.length) {
-          gameTick();
-          current_line++;
-          current_car = 0;
+  } else {
+    if (current_line <= 5) {
+      // if the character is a letter
+      if (String.fromCharCode(event.keyCode).match(/\w/gi)) {
+        // if the word is too long
+        if (current_car >= to_guest_word.length) {
+          return;
         }
-      } else if (event.key == "Backspace") {
-        if (current_car > 0) {
-          current_car--;
-          setCaseValue(current_line, current_car, "");
+        // force the key to be lowercase
+        var key = event.key.toLowerCase();
+  
+        // if the key is length of one we continue
+        // exclude stuff like F1, F2, F3, etc...
+        if (key.length > 1) {
+          return;
+        }
+  
+        key = normalize(key);
+        setCaseValue(current_line, current_car, key);
+        current_car++;
+      } else {
+        if (event.key == "Enter") {
+          // if the word is the correct size
+          if (current_car == to_guest_word.length) {
+            gameTick();
+            current_line++;
+            current_car = 0;
+          }
+        } else if (event.key == "Backspace") {
+          if (current_car > 0) {
+            current_car--;
+            setCaseValue(current_line, current_car, "");
+          }
         }
       }
     }
@@ -244,6 +244,7 @@ function boutonRejouerClick(event) {
   startGame();
 }
 
+// triggered when the user click the reset score button
 function clearScore() {
   var oktorefresh = confirm(
     "Attention !!! La partie actuelle se réinitialisera !"
