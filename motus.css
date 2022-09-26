@@ -93,14 +93,14 @@ body {
 /* source: https://fr.w3docs.com/tools/code-editor/4064 */
 button {
   display: inline-block;
-  background-color: blue;
+  background-color: rgb(0, 9, 134);
   border-radius: 10px;
   border: 4px double #cccccc;
   color: #eeeeee;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  padding: 5px;
+  width: 310px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -123,7 +123,7 @@ button span:after {
 }
 
 button:hover {
-  background-color: #001747;
+  background-color: #b1b1b1;
 }
 
 button:hover span {
