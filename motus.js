@@ -193,7 +193,7 @@ function endGame(win) {
   h1.innerHTML = win ? "Gagné !" : "Perdu !";
 
   var h2 = document.getElementById("motus-end-game-message");
-  h2.innerHTML = "Le mot était : "+ to_guest_word;
+  h2.innerHTML = "Le mot était : " + to_guest_word;
 
   var img = document.getElementById("motus-end-game-image");
   if (win) {
