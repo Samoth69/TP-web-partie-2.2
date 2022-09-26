@@ -13,6 +13,8 @@ var to_guest_word;
 // will be true if the game is finished (no matter if winned or losed)
 var is_done;
 
+var score;
+
 // return a random word
 function getRandomMot() {
   const random = Math.floor(Math.random() * mots.length);
@@ -22,6 +24,10 @@ function getRandomMot() {
 
 // called once on load
 function init() {
+  if (!localStorage.getItem("score")) {
+    localStorage.setItem("score", 0);
+  }
+
   document.addEventListener("keydown", (event) => onKeyPressed(event));
   document
     .getElementById("motus-end-game-button")
@@ -39,6 +45,10 @@ function startGame() {
   current_line = 0;
   to_guest_word = getRandomMot();
   var tb = document.getElementById(table_id);
+  score = localStorage.getItem("score");
+
+  var h2 = document.getElementById("motus-score");
+  h2.innerHTML = "Score : " + score;
 
   // clear inner html
   tb.innerHTML = "";
@@ -199,6 +209,8 @@ function endGame(win) {
   if (win) {
     img.setAttribute("src", "win.gif");
     img.setAttribute("alt", "Gagné !");
+    score++;
+    localStorage.setItem("score", score);
   } else {
     img.setAttribute("src", "lose.gif");
     img.setAttribute("alt", "Perdu !");
