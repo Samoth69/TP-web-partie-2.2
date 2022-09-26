@@ -9,6 +9,14 @@ body {
   align-items: center;
 }
 
+.motus-score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
 .motus-table-main {
   display: flex;
   flex-direction: column;

@@ -13,7 +13,11 @@ var to_guest_word;
 // will be true if the game is finished (no matter if winned or losed)
 var is_done;
 
+// nombre de parties gagnées
 var score;
+
+// nombre de parties jouées
+var nb_played;
 
 // return a random word
 function getRandomMot() {
@@ -26,6 +30,7 @@ function getRandomMot() {
 function init() {
   if (!localStorage.getItem("score")) {
     localStorage.setItem("score", 0);
+    localStorage.setItem("nb_played", 0);
   }
 
   document.addEventListener("keydown", (event) => onKeyPressed(event));
@@ -46,9 +51,20 @@ function startGame() {
   to_guest_word = getRandomMot();
   var tb = document.getElementById(table_id);
   score = localStorage.getItem("score");
+  nb_played = localStorage.getItem("nb_played");
 
-  var h2 = document.getElementById("motus-score");
-  h2.innerHTML = "Score : " + score;
+  var stat_score = document.getElementById("motus-score");
+  stat_score.innerHTML = "Score: " + score;
+
+  var stat_gameplay_counter = document.getElementById("motus-nb-played");
+  stat_gameplay_counter.innerHTML = "Parties jouées: " + nb_played;
+
+  var stat_pourcentage = document.getElementById("motus-pourcentage");
+  var pour = (score / nb_played) * 100;
+  if (isNaN(pour) || pour == Infinity) {
+    pour = 100;
+  }
+  stat_pourcentage.innerHTML = "Win rate: " + pour + "%";
 
   // clear inner html
   tb.innerHTML = "";
@@ -209,12 +225,14 @@ function endGame(win) {
   if (win) {
     img.setAttribute("src", "win.gif");
     img.setAttribute("alt", "Gagné !");
-    score++;
+    score++
     localStorage.setItem("score", score);
   } else {
     img.setAttribute("src", "lose.gif");
     img.setAttribute("alt", "Perdu !");
   }
+  nb_played++;
+  localStorage.setItem("nb_played", nb_played);
 
   is_done = true;
 }
