@@ -29,14 +29,16 @@ function getRandomMot() {
 // called once on load
 function init() {
   if (!localStorage.getItem("score")) {
-    localStorage.setItem("score", 0);
-    localStorage.setItem("nb_played", 0);
+    clearScore();
   }
 
   document.addEventListener("keydown", (event) => onKeyPressed(event));
   document
     .getElementById("motus-end-game-button")
     .addEventListener("click", (event) => boutonRejouerClick(event));
+  document
+    .getElementById("motus-reset-score-button")
+    .addEventListener("click", (event) => clearScore(event));
   startGame();
 }
 
@@ -240,6 +242,17 @@ function endGame(win) {
 // triggered when the user click the replay button
 function boutonRejouerClick(event) {
   startGame();
+}
+
+function clearScore() {
+  var oktorefresh = confirm(
+    "Attention !!! La partie en cours va être réinitialiser !"
+  );
+  if (oktorefresh) {
+    localStorage.setItem("score", 0);
+    localStorage.setItem("nb_played", 0);
+    window.location.reload();
+  }
 }
 
 window.onload = init;
