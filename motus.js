@@ -60,7 +60,7 @@ function startGame() {
   stat_gameplay_counter.innerHTML = "Parties jouées: " + nb_played;
 
   var stat_pourcentage = document.getElementById("motus-pourcentage");
-  var pour = (score / nb_played) * 100;
+  var pour = Math.round((score / nb_played) * 10000) / 100;
   if (isNaN(pour) || pour == Infinity) {
     pour = 100;
   }
@@ -225,7 +225,7 @@ function endGame(win) {
   if (win) {
     img.setAttribute("src", "win.gif");
     img.setAttribute("alt", "Gagné !");
-    score++
+    score++;
     localStorage.setItem("score", score);
   } else {
     img.setAttribute("src", "lose.gif");
